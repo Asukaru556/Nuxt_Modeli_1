@@ -20,8 +20,21 @@ export default defineEventHandler(async (event) => {
     const token = jwt.sign(
         { id: user.id },
         process.env.JWT_SECRET!,
-        { expiresIn: '1h' }
+        { expiresIn: '24h' } 
     );
+
+    setCookie(event, 'auth_token', token, {
+        httpOnly: false,
+        maxAge: 60 * 60 * 24,
+        path: '/',
+        sameSite: 'lax',
+        secure: process.env.NODE_ENV === 'production'
+    });
+
+    setCookie(event, 'user_email', user.email, {
+        maxAge: 60 * 60 * 24,
+        path: '/'
+    });
 
     return { token, userId: user.id, email: user.email };
 });

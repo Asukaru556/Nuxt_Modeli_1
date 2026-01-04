@@ -8,7 +8,6 @@ export default defineEventHandler(async (event) => {
   const id = getRouterParam(event, 'id');
   const baseDir = process.cwd();
 
-  // Получаем старые пути, чтобы удалить файлы при замене
   const [rows]: any = await pool.query('SELECT image_path, model_path FROM models WHERE id = ?', [id]);
   if (rows.length === 0) throw createError({ statusCode: 404 });
   const oldModel = rows[0];
@@ -42,7 +41,6 @@ export default defineEventHandler(async (event) => {
     }
   }
 
-  // Обновляем ВСЕ поля из твоей структуры
   await pool.query(
     `UPDATE models SET 
       title = ?, description = ?, price = ?, category_id = ?, 

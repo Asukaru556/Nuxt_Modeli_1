@@ -15,9 +15,10 @@
     "jsonwebtoken": "^9.0.3",
     "mime-types": "^3.0.2",
     "mysql2": "^3.16.0",
-    "nuxt": "^4.2.2",
+    "nuxt": "^3.15.4",
     "vue": "^3.5.25",
-    "vue-router": "^4.6.4"
+    "vue-router": "^4.6.4",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",
