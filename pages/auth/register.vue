@@ -90,7 +90,6 @@ async function handleRegister() {
 
   loading.value = true
   try {
-    // 1. Только регистрируем пользователя
     await $fetch('/api/auth/register', {
       method: 'POST',
       body: {
@@ -99,8 +98,6 @@ async function handleRegister() {
       }
     })
 
-    // 2. СРАЗУ перенаправляем на логин с параметром
-    // Мы НЕ вызываем здесь логин и НЕ сохраняем куки
     await navigateTo('/auth/login?registered=true')
     
   } catch (e) {
