@@ -34,12 +34,13 @@ function handleLogout() {
 <style scoped>
 .admin-nav {
   background: #7ba3e2;
-  color: rgb(14, 5, 5);
+  color: #0e0505;
   padding: 0 20px;
   height: 64px;
   display: flex;
   align-items: center;
 }
+
 .nav-container {
   max-width: 1200px;
   width: 100%;
@@ -48,14 +49,35 @@ function handleLogout() {
   justify-content: space-between;
   align-items: center;
 }
-.nav-links { display: flex; gap: 20px; }
+
+.nav-links { 
+  display: flex; 
+  gap: 10px;
+  height: 100%;
+}
+
 .nav-item {
-  color: #cbd5e1;
+  color: #2c3e50;
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s;
+  padding: 15px 16px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
 }
-.nav-item.router-link-active { color: #010102; }
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #000000;
+}
+
+.nav-item.router-link-active {
+  background: #ffffff;
+  color: #040507;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .user-menu { display: flex; align-items: center; gap: 15px; }
 .user-name { font-size: 14px; color: #020405; }
 .logout-btn {

@@ -3,6 +3,10 @@
     <form @submit.prevent="handleLogin" class="login-card">
       <h2>Вход</h2>
       
+      <div v-if="route.query.registered" class="success-banner">
+        Регистрация прошла успешно!<br>Войдите в свой аккаунт.
+      </div>
+
       <div class="field">
         <input 
           v-model="form.email" 
@@ -47,6 +51,7 @@ const errors = reactive({
   password: '' 
 })
 
+const route = useRoute()
 const loading = ref(false)
 const token = useCookie('auth_token')
 const userEmail = useCookie('user_email')
@@ -68,7 +73,7 @@ async function handleLogin() {
   }
 
   if (hasError) {
-    console.log('Ошибки валидации:', errors) // Проверьте консоль браузера
+    console.log('Ошибки валидации:', errors)
     return
   }
 
@@ -122,6 +127,18 @@ input.bad {
   font-size: 12px;
   margin-top: 4px;
   display: block;
+}
+
+.success-banner {
+  background-color: #ecfdf5;
+  color: #059669;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #10b981;
+  font-size: 14px;
+  text-align: center;
+  line-height: 1.4;
+  margin-bottom: 5px;
 }
 
 button { background: #3b82f6; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; }

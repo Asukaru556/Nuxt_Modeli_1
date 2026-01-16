@@ -50,7 +50,7 @@ definePageMeta({ layout: 'admin' })
 
 
 <style scoped>
-.admin-page { padding: 2rem; max-width: 800px; margin: 0 auto; }
+.admin-page { padding: 2rem; max-width: 900px; margin: 0 auto; }
 .header-section { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; }
 .page-title { font-size: 1.5rem; font-weight: bold; margin: 0; }
 

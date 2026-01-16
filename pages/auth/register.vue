@@ -90,6 +90,7 @@ async function handleRegister() {
 
   loading.value = true
   try {
+    // 1. Только регистрируем пользователя
     await $fetch('/api/auth/register', {
       method: 'POST',
       body: {
@@ -98,21 +99,9 @@ async function handleRegister() {
       }
     })
 
-    const data = await $fetch('/api/auth/login', {
-      method: 'POST',
-      body: {
-        email: form.email,
-        password: form.password
-      }
-    })
-    
-    const token = useCookie('auth_token', { maxAge: 60 * 60 * 24 * 7 })
-    const userEmail = useCookie('user_email')
-    
-    token.value = data.token
-    userEmail.value = data.email
-
-    await navigateTo('/admin/models')
+    // 2. СРАЗУ перенаправляем на логин с параметром
+    // Мы НЕ вызываем здесь логин и НЕ сохраняем куки
+    await navigateTo('/auth/login?registered=true')
     
   } catch (e) {
     if (e.data?.statusMessage?.includes('email')) {
